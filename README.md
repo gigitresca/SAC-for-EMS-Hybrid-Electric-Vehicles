@@ -1,4 +1,4 @@
-# RL-for-EMS-plugin-Hybrid-Electric-Vehicles
+# SAC-for-EMS-Hybrid-Electric-Vehicles
 Official implementation of the paper [Development of a Soft-Actor Critic reinforcement Learning Algorithm for the Energy Management of Hybrid Electric Vehicle](https://www.sae.org/publications/technical-papers/content/2024-37-0011/)
 presented at CO2 Reduction for Transportation Systems Conference 2024, held in Turin.
 

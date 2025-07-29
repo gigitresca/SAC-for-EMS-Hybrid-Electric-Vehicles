@@ -13,6 +13,11 @@ from src.utilities.initialization import gen_vehicle_objects, gen_driving_cycles
 from gymnasium.envs.registration import register
 from stable_baselines3 import SAC
 
+# Argument parser
+parser = argparse.ArgumentParser(description='SAC_test')
+parser.add_argument('--agent_name', type=str, default=datetime.date.today().strftime("%Y%m%d")+"_SAC", metavar='S',
+                    help='agent name (default: date_of_today_SAC)')
+args = parser.parse_args()
 
 # Vehicle and driving cycles definition
 ice, em, ess, gb, fd, wh, veh = gen_vehicle_objects('data/vehicle_data.xlsx')
@@ -32,10 +37,8 @@ cycle = {'WLTC':driving_cycles['WLTC']}
 env = gym.make(env_id, driving_cycles=cycle, veh=veh, wh=wh, fd=fd, gb=gb, ice=ice, em=em, ess=ess, env_time_step=1)
 
 
-models_dir = "results/saved_agents"
-model_path = f"{models_dir}/best_model.pth"
-
-model = SAC.load(model_path, env=env)
+model_name = f"results/saved_agents/{args.agent_name}.pth"
+model = SAC.load(model_name, env=env)
 
 episodes = 1
 for ep in range(episodes):
